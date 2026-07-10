@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-display: var(--font-playfair), Georgia, serif;
+
+  /* Custom Color Tokens - Charming Bright Rose & Peach-Coral Palette */
+  --color-background: #ffffff; /* Clean Bright White */
+  --color-foreground: #251216; /* Deep rich cherry/black */
+  
+  --color-card: #ffffff;
+  --color-card-foreground: #251216;
+  
+  --color-popover: #ffffff;
+  --color-popover-foreground: #251216;
+  
+  --color-primary: #ff406c; /* Charming bright raspberry pink */
+  --color-primary-foreground: #ffffff;
+  
+  --color-secondary: #fff0f2; /* Glowing rosewater tint */
+  --color-secondary-foreground: #4c1d24;
+  
+  --color-muted: #ffe4e8;
+  --color-muted-foreground: #9f7178;
+  
+  --color-accent: #ff8b70; /* Vibrant peach coral */
+  --color-accent-foreground: #4c1d24;
+  
+  --color-destructive: #ff3333;
+  --color-destructive-foreground: #ffffff;
+  
+  --color-border: #ffdce1;
+  --color-input: #ffdce1;
+  --color-ring: #ff406c;
+
+  --radius: 1rem; /* More rounded, friendly curves */
+}
+
+/* Redefine dark mode to a vibrant luxury deep cherry theme with high-contrast glowing elements */
+.dark {
+  --color-background: #180709; /* Deep Rich Cherry */
+  --color-foreground: #ffeef1; /* Bright Rose-White */
+  
+  --color-card: #240d10;
+  --color-card-foreground: #ffeef1;
+  
+  --color-popover: #240d10;
+  --color-popover-foreground: #ffeef1;
+  
+  --color-primary: #ff527b; /* Glowing Raspberry Rose */
+  --color-primary-foreground: #180709;
+  
+  --color-secondary: #3b141a;
+  --color-secondary-foreground: #ffd6dc;
+  
+  --color-muted: #301014;
+  --color-muted-foreground: #b89096;
+  
+  --color-accent: #ff7554; /* Glowing Coral Peach */
+  --color-accent-foreground: #180709;
+  
+  --color-border: #4d1820;
+  --color-input: #4d1820;
+  --color-ring: #ff527b;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair), Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#ff3366] via-[#ff6b8b] to-[#ffa352];
+  }
+}
+
