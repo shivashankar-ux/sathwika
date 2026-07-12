@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { Palette, Sparkles, Heart, Sparkle } from "lucide-react";
 import { CuteDaisy, CuteLeaf, HeaderDecoration, FloralDivider } from "@/components/ui/floral-decorations";
 
@@ -114,14 +115,15 @@ export function AboutSection() {
           >
             {/* Soft Feminine Photo Frame */}
             <div className="aspect-square rounded-3xl bg-gradient-to-br from-[#fff3f0] via-[#faeae6] to-[#fdeae7] border-3 border-dashed border-primary/30 p-4 relative overflow-hidden shadow-lg shadow-primary/5 flex items-center justify-center">
-              <div className="text-center p-8 bg-background/70 backdrop-blur-xs rounded-2xl border border-border/40 w-full h-full flex flex-col justify-center items-center">
-                <div className="w-28 h-28 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 relative animate-pulse">
-                  <CuteDaisy className="w-16 h-16 text-primary" />
-                </div>
-                <h4 className="font-serif text-lg font-semibold mb-1 text-foreground">Sathwika</h4>
-                <p className="text-muted-foreground text-xs leading-normal">
-                  Add your beautiful portrait here<br />in /public/images/
-                </p>
+              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-border/40 bg-background/50">
+                <Image 
+                  src="/images/profile-casual.jpg" 
+                  alt="Sathwika Profile" 
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
               </div>
             </div>
             

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Eye, Sparkles } from "lucide-react";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Project } from "@/types";
@@ -13,63 +14,103 @@ const categories = ["All", "Branding", "Print", "Digital", "Illustration"];
 const projects: Project[] = [
   {
     id: "1",
-    title: "Lumina Brand Identity",
-    description: "Complete brand identity for a sustainable skincare & lighting brand including packaging and guidelines.",
-    category: "Branding",
+    title: "Creative Tools & Design Showcase",
+    description: "Personal design concept showcasing expertise in Adobe Photoshop, Illustrator, and digital graphics editing.",
+    category: "Digital",
     image: "/images/project-1.jpg",
-    tags: ["Logo Design", "Packaging", "Aesthetics"],
+    tags: ["Photoshop", "Illustrator", "Digital Art"],
     link: "#",
-    year: "2025",
+    year: "2026",
   },
   {
     id: "2",
-    title: "Urban Coffee & Co.",
-    description: "Charming pastel packaging design and brand collateral for an artisan coffee roaster.",
-    category: "Print",
+    title: "Brand Strategy & Visual Design",
+    description: "A strategic brand planning visual campaign emphasizing strategy-driven branding layouts and typography.",
+    category: "Branding",
     image: "/images/project-2.jpg",
-    tags: ["Packaging", "Stationery", "Typography"],
+    tags: ["Branding", "Layout Design", "Typography"],
+    link: "#",
+    year: "2026",
+  },
+  {
+    id: "3",
+    title: "Digital Marketing Campaign Dashboard",
+    description: "Conceptual social media marketing design combining business statistics and custom marketing vectors.",
+    category: "Digital",
+    image: "/images/project-3.jpg",
+    tags: ["UI Design", "Marketing", "Data Graphics"],
+    link: "#",
+    year: "2026",
+  },
+  {
+    id: "4",
+    title: "Social Media Platform Branding",
+    description: "Cross-platform social media branding kit featuring custom layouts for Instagram, Twitter, and LinkedIn.",
+    category: "Digital",
+    image: "/images/project-4.jpg",
+    tags: ["Social Media", "Branding", "Template"],
+    link: "#",
+    year: "2026",
+  },
+  {
+    id: "5",
+    title: "Modern Marketing Banner Kit",
+    description: "Sleek, corporate-themed advertising banner kit with modern abstract styling and illustrations.",
+    category: "Digital",
+    image: "/images/project-5.jpg",
+    tags: ["Ad Creatives", "Vector Design", "Layout"],
+    link: "#",
+    year: "2026",
+  },
+  {
+    id: "6",
+    title: "Enterprise Social Collateral",
+    description: "Creative social media advertising and header banner design targeting professional audiences.",
+    category: "Print",
+    image: "/images/project-6.jpg",
+    tags: ["Ad Design", "Layout", "Banners"],
     link: "#",
     year: "2025",
   },
   {
-    id: "3",
-    title: "Bloom Skincare App",
-    description: "Cute, soft user interface design for a clean beauty e-commerce dashboard and mobile app.",
-    category: "Digital",
-    image: "/images/project-3.jpg",
-    tags: ["UI/UX", "Mobile App", "Interaction"],
-    link: "#",
-    year: "2024",
-  },
-  {
-    id: "4",
-    title: "Botanical Series",
-    description: "A gorgeous collection of hand-drawn botanical illustrations for a luxury fragrance brand.",
-    category: "Illustration",
-    image: "/images/project-4.jpg",
-    tags: ["Illustration", "Digital Art", "Florals"],
-    link: "#",
-    year: "2024",
-  },
-  {
-    id: "5",
-    title: "Nova Bloom Rebrand",
-    description: "Full visual redesign for a boutique floral design shop including cards, tags, and web assets.",
+    id: "7",
+    title: "Colorful Digital Brand Kit",
+    description: "A bright, vibrant set of social media headers and branding assets to elevate online presence.",
     category: "Branding",
-    image: "/images/project-5.jpg",
-    tags: ["Rebrand", "Collateral", "Visuals"],
+    image: "/images/project-7.jpg",
+    tags: ["Vibrant Theme", "Social Kit", "Logo"],
     link: "#",
-    year: "2024",
+    year: "2025",
   },
   {
-    id: "6",
-    title: "Wanderlust Lookbook",
-    description: "Editorial layout and aesthetic lookbook design for a slow fashion brand summer editorial.",
-    category: "Print",
-    image: "/images/project-6.jpg",
-    tags: ["Lookbook", "Editorial", "Layout"],
+    id: "8",
+    title: "Minimalist Pastel Banners",
+    description: "Cozy, warm-colored advertising banners designed to connect deeply and tell a soft story.",
+    category: "Illustration",
+    image: "/images/project-8.jpg",
+    tags: ["Pastel", "Illustration", "Banners"],
     link: "#",
-    year: "2023",
+    year: "2025",
+  },
+  {
+    id: "9",
+    title: "Corporate Blue Wave Graphics",
+    description: "Abstract flow designs for corporate banners and print lookbooks with clean aesthetics.",
+    category: "Print",
+    image: "/images/project-9.jpg",
+    tags: ["Print Layout", "Abstract", "Corporate"],
+    link: "#",
+    year: "2025",
+  },
+  {
+    id: "10",
+    title: "Creative Story Template Carousel",
+    description: "Warm pink and orange instagram post template designs with playful typography and icons.",
+    category: "Digital",
+    image: "/images/project-10.jpg",
+    tags: ["Carousel", "Template", "Instagram"],
+    link: "#",
+    year: "2025",
   },
 ];
 
@@ -134,17 +175,15 @@ export function ProjectsSection() {
                 transition={{ duration: 0.4 }}
                 className="group relative rounded-2xl overflow-hidden bg-card border border-border/80 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-500"
               >
-                {/* Soft Floral Image Placeholder */}
-                <div className="aspect-[4/3] bg-gradient-to-br from-[#fff7f5] via-[#faeae6] to-[#fdeae7] flex items-center justify-center relative overflow-hidden border-b border-border/50">
-                  <div className="text-center p-6 transition-transform duration-500 group-hover:scale-110">
-                    <CuteDaisy className="w-12 h-12 text-primary/30 mx-auto mb-3 animate-spin-slow" />
-                    <p className="text-sm font-serif font-bold text-muted-foreground/70">
-                      {project.title}
-                    </p>
-                    <p className="text-[10px] text-muted-foreground/40 mt-1 font-sans">
-                      Add: /public/images/project-{project.id}.jpg
-                    </p>
-                  </div>
+                {/* Soft Floral Image Container */}
+                <div className="aspect-[4/3] bg-gradient-to-br from-[#fff7f5] via-[#faeae6] to-[#fdeae7] relative overflow-hidden border-b border-border/50">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-background/90 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                     <Button size="sm" className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-md shadow-primary/10 hover:scale-105 transition-transform" asChild>
