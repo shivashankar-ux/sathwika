@@ -117,13 +117,13 @@ export function HeroSection() {
                   className="font-display font-black uppercase text-white leading-none"
                   style={{ fontSize: "clamp(4rem, 10vw, 8rem)", lineHeight: 0.9 }}
                 >
-                  port
+                  Sath
                   <br />
                   <span
                     className="relative inline-block"
                     style={{ WebkitTextStroke: "2px #e6ff00", color: "transparent" }}
                   >
-                    folio
+                    wika
                   </span>
                 </h1>
               </motion.div>
@@ -137,7 +137,7 @@ export function HeroSection() {
               >
                 <div className="h-0.5 w-10" style={{ background: "#e6ff00" }} />
                 <span className="font-script text-3xl" style={{ color: "#e6ff00" }}>
-                  Sathwika
+                  portfolio
                 </span>
               </motion.div>
 
