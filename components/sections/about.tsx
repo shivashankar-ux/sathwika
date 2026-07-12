@@ -15,7 +15,7 @@ const stats = [
 export function AboutSection() {
   return (
     <>
-      <section id="about" className="relative bg-grid-paper py-24 md:py-32">
+      <section id="about" className="relative py-24 md:py-32" style={{ background: "#161616" }}>
         <div className="max-w-7xl mx-auto px-6">
 
           {/* ── INTRO HEADING ── */}
@@ -25,7 +25,7 @@ export function AboutSection() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <p className="font-display text-5xl md:text-7xl font-black text-[#0a0a0a] leading-tight">
+            <p className="font-display text-5xl md:text-7xl font-black text-white leading-tight">
               Hello.
               <br />
               This is my{" "}
@@ -51,7 +51,7 @@ export function AboutSection() {
               />
               <div
                 className="relative aspect-[3/4] w-full max-w-sm overflow-hidden"
-                style={{ zIndex: 1, border: "2px solid #0a0a0a" }}
+                style={{ zIndex: 1, border: "2px solid rgba(255,255,255,0.15)" }}
               >
                 <Image
                   src="/images/profile-formal.jpg"
@@ -71,8 +71,8 @@ export function AboutSection() {
                 className="flex items-center gap-2 mt-4"
                 style={{ position: "relative", zIndex: 2 }}
               >
-                <HandwrittenArrow direction="right" className="w-10 h-6" color="#0a0a0a" />
-                <span className="font-script text-xl text-[#0a0a0a]">About me</span>
+                <HandwrittenArrow direction="right" className="w-10 h-6" color="#ffffff" />
+                <span className="font-script text-xl text-white/50">About me</span>
               </motion.div>
             </motion.div>
 
@@ -84,14 +84,14 @@ export function AboutSection() {
               transition={{ duration: 0.7 }}
               className="flex flex-col justify-center"
             >
-              <h2 className="font-display text-4xl md:text-5xl font-black text-[#0a0a0a] uppercase mb-2">
+              <h2 className="font-display text-4xl md:text-5xl font-black text-white uppercase mb-2">
                 Sathwika
               </h2>
               <p className="font-display font-bold uppercase tracking-widest text-sm mb-6" style={{ color: "#e6ff00", background: "#0a0a0a", display: "inline-block", padding: "2px 10px" }}>
                 Graphic Designer &amp; SMM
               </p>
 
-              <div className="space-y-4 text-[#333333] text-base font-sans leading-relaxed mb-8">
+              <div className="space-y-4 text-white/70 text-base font-sans leading-relaxed mb-8">
                 <p>
                   Hi, I&apos;m Sathwika — a visual designer and illustrator with a deep love for visual storytelling.
                   Over the past 5+ years, I&apos;ve had the joy of working with small business owners, boutique brands,
@@ -105,19 +105,19 @@ export function AboutSection() {
 
               {/* Contact pills */}
               <div className="space-y-3 mb-8">
-                <p className="text-xs font-bold font-display uppercase tracking-widest text-[#0a0a0a]/50 border-l-4 border-[#e6ff00] pl-3">
+                <p className="text-xs font-bold font-display uppercase tracking-widest text-white/40 border-l-4 border-[#e6ff00] pl-3">
                   Contact
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <a href="tel:+91" className="flex items-center gap-2 px-4 py-2 border border-[#0a0a0a] text-sm font-semibold font-sans text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white transition-colors">
+                  <a href="tel:+91" className="flex items-center gap-2 px-4 py-2 border border-white/30 text-sm font-semibold font-sans text-white/80 hover:bg-[#e6ff00] hover:text-[#0a0a0a] hover:border-[#e6ff00] transition-colors">
                     <Phone className="w-3.5 h-3.5" />
                     Call Me
                   </a>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 border border-[#0a0a0a] text-sm font-semibold font-sans text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white transition-colors">
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 border border-white/30 text-sm font-semibold font-sans text-white/80 hover:bg-[#e6ff00] hover:text-[#0a0a0a] hover:border-[#e6ff00] transition-colors">
                     <Instagram className="w-3.5 h-3.5" />
                     @sathwika
                   </a>
-                  <a href="mailto:sathwika@example.com" className="flex items-center gap-2 px-4 py-2 border border-[#0a0a0a] text-sm font-semibold font-sans text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white transition-colors">
+                  <a href="mailto:sathwika@example.com" className="flex items-center gap-2 px-4 py-2 border border-white/30 text-sm font-semibold font-sans text-white/80 hover:bg-[#e6ff00] hover:text-[#0a0a0a] hover:border-[#e6ff00] transition-colors">
                     <Mail className="w-3.5 h-3.5" />
                     Email
                   </a>
@@ -126,8 +126,8 @@ export function AboutSection() {
 
               {/* Handwritten arrow to CTA */}
               <div className="flex items-center gap-2">
-                <HandwrittenArrow direction="right" className="w-10 h-6" color="#0a0a0a" />
-                <a href="#contact" className="font-script text-xl underline underline-offset-4 text-[#0a0a0a] hover:text-[#e6ff00] transition-colors" style={{ textDecorationColor: "#e6ff00" }}>
+                <HandwrittenArrow direction="right" className="w-10 h-6" color="#ffffff" />
+                <a href="#contact" className="font-script text-xl underline underline-offset-4 text-white hover:text-[#e6ff00] transition-colors" style={{ textDecorationColor: "#e6ff00" }}>
                   Get in touch
                 </a>
               </div>
@@ -139,7 +139,7 @@ export function AboutSection() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[#0a0a0a]"
+            className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/10"
           >
             {stats.map((stat, i) => (
               <motion.div
@@ -150,10 +150,10 @@ export function AboutSection() {
                 transition={{ delay: i * 0.1 }}
                 className="p-8 text-center border-r border-[#0a0a0a] last:border-r-0 md:[&:nth-child(2)]:border-r md:[&:nth-child(4)]:border-r-0 hover:bg-[#e6ff00] transition-colors group"
               >
-                <div className="font-display text-4xl font-black text-[#0a0a0a] group-hover:text-[#0a0a0a] mb-1">
+                <div className="font-display text-4xl font-black text-white group-hover:text-[#0a0a0a] mb-1">
                   {stat.number}
                 </div>
-                <div className="text-xs font-display font-bold uppercase tracking-wider text-[#0a0a0a]/50 group-hover:text-[#0a0a0a]/70">
+                <div className="text-xs font-display font-bold uppercase tracking-wider text-white/40 group-hover:text-[#0a0a0a]/70">
                   {stat.label}
                 </div>
               </motion.div>
