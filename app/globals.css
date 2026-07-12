@@ -1,68 +1,68 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), Georgia, serif;
-  --font-display: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  --font-display: var(--font-display, ui-sans-serif, system-ui, sans-serif);
+  --font-script: var(--font-script, cursive);
 
-  /* Custom Color Tokens - Charming Bright Rose & Peach-Coral Palette */
-  --color-background: #ffffff; /* Clean Bright White */
-  --color-foreground: #251216; /* Deep rich cherry/black */
-  
+  /* ── HIGH-CONTRAST BLACK & NEON YELLOW THEME ── */
+  --color-background: #f5f5f0;        /* Off-white grid paper */
+  --color-foreground: #0a0a0a;        /* Near-black */
+
   --color-card: #ffffff;
-  --color-card-foreground: #251216;
-  
-  --color-popover: #ffffff;
-  --color-popover-foreground: #251216;
-  
-  --color-primary: #ff406c; /* Charming bright raspberry pink */
-  --color-primary-foreground: #ffffff;
-  
-  --color-secondary: #fff0f2; /* Glowing rosewater tint */
-  --color-secondary-foreground: #4c1d24;
-  
-  --color-muted: #ffe4e8;
-  --color-muted-foreground: #9f7178;
-  
-  --color-accent: #ff8b70; /* Vibrant peach coral */
-  --color-accent-foreground: #4c1d24;
-  
-  --color-destructive: #ff3333;
-  --color-destructive-foreground: #ffffff;
-  
-  --color-border: #ffdce1;
-  --color-input: #ffdce1;
-  --color-ring: #ff406c;
+  --color-card-foreground: #0a0a0a;
 
-  --radius: 1rem; /* More rounded, friendly curves */
+  --color-popover: #ffffff;
+  --color-popover-foreground: #0a0a0a;
+
+  --color-primary: #e6ff00;           /* Neon highlighter yellow */
+  --color-primary-foreground: #0a0a0a;
+
+  --color-secondary: #1a1a1a;         /* Near-black secondary */
+  --color-secondary-foreground: #f0f0f0;
+
+  --color-muted: #ebebeb;
+  --color-muted-foreground: #555555;
+
+  --color-accent: #e6ff00;
+  --color-accent-foreground: #0a0a0a;
+
+  --color-destructive: #ff3b30;
+  --color-destructive-foreground: #ffffff;
+
+  --color-border: #d0d0d0;
+  --color-input: #d0d0d0;
+  --color-ring: #e6ff00;
+
+  --radius: 0.25rem;
 }
 
-/* Redefine dark mode to a vibrant luxury deep cherry theme with high-contrast glowing elements */
+/* Dark mode — deep black with yellow neon glow */
 .dark {
-  --color-background: #180709; /* Deep Rich Cherry */
-  --color-foreground: #ffeef1; /* Bright Rose-White */
-  
-  --color-card: #240d10;
-  --color-card-foreground: #ffeef1;
-  
-  --color-popover: #240d10;
-  --color-popover-foreground: #ffeef1;
-  
-  --color-primary: #ff527b; /* Glowing Raspberry Rose */
-  --color-primary-foreground: #180709;
-  
-  --color-secondary: #3b141a;
-  --color-secondary-foreground: #ffd6dc;
-  
-  --color-muted: #301014;
-  --color-muted-foreground: #b89096;
-  
-  --color-accent: #ff7554; /* Glowing Coral Peach */
-  --color-accent-foreground: #180709;
-  
-  --color-border: #4d1820;
-  --color-input: #4d1820;
-  --color-ring: #ff527b;
+  --color-background: #080808;
+  --color-foreground: #f0f0f0;
+
+  --color-card: #111111;
+  --color-card-foreground: #f0f0f0;
+
+  --color-popover: #111111;
+  --color-popover-foreground: #f0f0f0;
+
+  --color-primary: #e6ff00;
+  --color-primary-foreground: #080808;
+
+  --color-secondary: #1f1f1f;
+  --color-secondary-foreground: #e0e0e0;
+
+  --color-muted: #1a1a1a;
+  --color-muted-foreground: #888888;
+
+  --color-accent: #e6ff00;
+  --color-accent-foreground: #080808;
+
+  --color-border: #2a2a2a;
+  --color-input: #2a2a2a;
+  --color-ring: #e6ff00;
 }
 
 @layer base {
@@ -77,7 +77,9 @@
     scroll-behavior: smooth;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair), Georgia, serif;
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -85,8 +87,76 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Neon Yellow highlight gradient */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#ff3366] via-[#ff6b8b] to-[#ffa352];
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #e6ff00 0%, #c8e600 100%);
+  }
+
+  /* Font utilities */
+  .font-display {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  }
+  .font-script {
+    font-family: var(--font-script), cursive;
+  }
+
+  /* Grid paper background */
+  .bg-grid-paper {
+    background-color: #f5f5f0;
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .dark .bg-grid-paper {
+    background-color: #0d0d0d;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Black section */
+  .bg-ink {
+    background-color: #0a0a0a;
+    color: #f0f0f0;
+  }
+
+  /* Yellow highlighter box */
+  .highlight-yellow {
+    background-color: #e6ff00;
+    color: #0a0a0a;
+    display: inline;
+    padding: 0 6px;
+  }
+
+  /* Neon yellow border left accent */
+  .border-l-accent {
+    border-left: 4px solid #e6ff00;
+    padding-left: 12px;
+  }
+
+  /* Thick yellow underline */
+  .underline-yellow {
+    text-decoration: underline;
+    text-decoration-color: #e6ff00;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 4px;
+  }
+
+  /* Yellow glow shadow */
+  .shadow-neon {
+    box-shadow: 0 0 0 3px #e6ff00;
+  }
+
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 }
-

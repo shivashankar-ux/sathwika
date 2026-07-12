@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Barlow_Condensed, Barlow, Caveat } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -7,14 +7,21 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: ["400", "600", "700", "800", "900"],
+  variable: "--font-display",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const barlow = Barlow({
   subsets: ["latin"],
-  variable: "--font-jakarta",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-script",
 });
 
 export const metadata: Metadata = {
@@ -36,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${playfair.variable} ${jakarta.variable} font-sans`}>
+      <body className={`${barlowCondensed.variable} ${barlow.variable} ${caveat.variable} font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

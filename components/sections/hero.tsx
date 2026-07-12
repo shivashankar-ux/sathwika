@@ -1,120 +1,246 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Heart } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { FloralFloatingBackground, CuteDaisy, CuteSparkle, TulipIcon } from "@/components/ui/floral-decorations";
+import Script from "next/script";
+import Image from "next/image";
+import { JaggedTornEdge, GridFloatingAccents, HandwrittenArrow } from "@/components/ui/handdrawn-decorations";
+
+declare global {
+  interface Window {
+    VANTA?: {
+      BIRDS: (options: Record<string, unknown>) => { destroy: () => void };
+    };
+    THREE?: unknown;
+  }
+}
 
 export function HeroSection() {
+  const vantaRef = useRef<HTMLDivElement>(null);
+  const vantaEffect = useRef<{ destroy: () => void } | null>(null);
+
+  const initVanta = () => {
+    if (window.VANTA && vantaRef.current && !vantaEffect.current) {
+      vantaEffect.current = window.VANTA.BIRDS({
+        el: vantaRef.current,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        backgroundColor: 0x0a0a0a,
+        color1: 0xe6ff00,
+        color2: 0xffffff,
+        colorMode: "lerp",
+        birdSize: 1.2,
+        wingSpan: 25,
+        speedLimit: 4,
+        separation: 40,
+        alignment: 70,
+        cohesion: 70,
+        quantity: 3,
+      });
+    }
+  };
+
+  useEffect(() => {
+    // If scripts are already loaded (e.g., hot reload), try init immediately
+    if (window.VANTA) initVanta();
+    return () => {
+      if (vantaEffect.current) {
+        vantaEffect.current.destroy();
+        vantaEffect.current = null;
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* Floral Background Animation */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/15 via-background to-background" />
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjI3LDEzOSwxMjksMC4wNCkiLz48L3N2Zz4=')] opacity-60" />
-      
-      <FloralFloatingBackground />
+    <>
+      {/* ── CDN Scripts (loaded once) ── */}
+      <Script
+        src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"
+        strategy="afterInteractive"
+        onLoad={() => {
+          // Vanta needs THREE first; load vanta after three is ready
+        }}
+      />
+      <Script
+        src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"
+        strategy="afterInteractive"
+        onLoad={initVanta}
+      />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Soft Cute Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/80 border border-border/80 mb-8 shadow-xs">
-            <TulipIcon className="w-4 h-4 text-primary animate-bounce" />
-            <span className="text-sm font-medium text-muted-foreground">Creating visual magic & storyteller</span>
-          </div>
-        </motion.div>
-
-        {/* Title and Decor */}
-        <div className="relative inline-block mb-6">
-          {/* Sparkles around Title */}
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], rotate: [0, 15, 0] }}
-            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            className="absolute -top-6 -left-8 text-primary/40 hidden sm:block"
-          >
-            <CuteSparkle className="w-8 h-8" />
-          </motion.div>
-          
-          <motion.div
-            animate={{ scale: [1.2, 1, 1.2], rotate: [0, -15, 0] }}
-            transition={{ repeat: Infinity, duration: 4, delay: 1, ease: "easeInOut" }}
-            className="absolute -bottom-2 -right-8 text-[#fcdbd5] hidden sm:block"
-          >
-            <CuteSparkle className="w-6 h-6" />
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight px-4"
-          >
-            <span className="gradient-text">Sathwika</span>
-          </motion.h1>
-        </div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-xl sm:text-2xl md:text-3xl text-muted-foreground font-light mb-4 flex items-center justify-center gap-2"
-        >
-          Graphic Designer <Heart className="w-4 h-4 text-primary fill-primary/30" /> Visual Storyteller
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="text-base sm:text-lg text-muted-foreground/80 max-w-2xl mx-auto mb-12 leading-relaxed font-sans"
-        >
-          I craft beautiful identities, warm illustration series, and cute brand stories 
-          that help lovely brands blossom and connect deeply with their audience.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Button size="lg" className="rounded-full px-8 bg-primary hover:bg-primary/90 text-primary-foreground hover:scale-105 transition-all duration-300 shadow-md shadow-primary/20" asChild>
-            <a href="#projects">Explore My Work</a>
-          </Button>
-          <Button size="lg" variant="outline" className="rounded-full px-8 border-primary/30 text-foreground hover:bg-secondary hover:scale-105 transition-all duration-300" asChild>
-            <a href="#contact">Say Hello</a>
-          </Button>
-        </motion.div>
-      </div>
-
-      {/* Cute Daisy Floating in Corner */}
-      <div className="absolute bottom-16 right-16 opacity-10 animate-spin-slow hidden lg:block">
-        <CuteDaisy className="w-32 h-32" />
-      </div>
-      <div className="absolute top-24 left-12 opacity-10 animate-pulse hidden lg:block">
-        <CuteDaisy className="w-24 h-24" />
-      </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      <section
+        ref={vantaRef}
+        className="relative min-h-screen flex items-center overflow-hidden"
+        style={{ background: "#0a0a0a" }}
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <a href="#about" aria-label="Scroll down" className="flex flex-col items-center gap-1 text-muted-foreground/60 hover:text-primary transition-colors">
-            <span className="text-xs uppercase tracking-wider font-semibold">Scroll</span>
-            <ArrowDown className="w-4 h-4" />
-          </a>
-        </motion.div>
-      </motion.div>
-    </section>
+        {/* Vanta canvas sits here via the ref — no extra overlay needed */}
+
+        {/* Thin yellow vertical accent line */}
+        <div
+          className="absolute left-0 top-0 bottom-0 w-1 hidden lg:block z-10"
+          style={{ background: "#e6ff00" }}
+        />
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-24 pb-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+            {/* ── LEFT: TEXT ── */}
+            <div>
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="flex items-center gap-3 mb-8"
+              >
+                <div className="h-[2px] w-8" style={{ background: "#e6ff00" }} />
+                <span
+                  className="text-xs font-bold font-display uppercase tracking-[0.2em]"
+                  style={{ color: "#e6ff00" }}
+                >
+                  Graphic Designer &amp; Social Media
+                </span>
+              </motion.div>
+
+              {/* Main headline */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+              >
+                <h1
+                  className="font-display font-black uppercase text-white leading-none"
+                  style={{ fontSize: "clamp(4rem, 10vw, 8rem)", lineHeight: 0.9 }}
+                >
+                  port
+                  <br />
+                  <span
+                    className="relative inline-block"
+                    style={{ WebkitTextStroke: "2px #e6ff00", color: "transparent" }}
+                  >
+                    folio
+                  </span>
+                </h1>
+              </motion.div>
+
+              {/* Handwritten name overlay */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="mt-4 mb-8 flex items-center gap-3"
+              >
+                <div className="h-0.5 w-10" style={{ background: "#e6ff00" }} />
+                <span className="font-script text-3xl" style={{ color: "#e6ff00" }}>
+                  Sathwika
+                </span>
+              </motion.div>
+
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.5 }}
+                className="text-white/60 text-base font-sans max-w-md leading-relaxed mb-10"
+              >
+                Creating visual magic through stunning brand identities, social media
+                designs, and digital storytelling that helps brands connect and grow.
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.6 }}
+                className="flex flex-wrap gap-4 items-center"
+              >
+                <a
+                  href="#projects"
+                  className="px-8 py-3 font-bold font-display uppercase tracking-wider text-sm transition-all hover:scale-105 active:scale-95"
+                  style={{ background: "#e6ff00", color: "#0a0a0a" }}
+                >
+                  Explore My Work
+                </a>
+                <a
+                  href="#contact"
+                  className="px-8 py-3 font-bold font-display uppercase tracking-wider text-sm border-2 text-white transition-all hover:border-[#e6ff00] hover:text-[#e6ff00]"
+                  style={{ borderColor: "rgba(255,255,255,0.25)" }}
+                >
+                  Say Hello
+                </a>
+              </motion.div>
+
+              {/* Scroll label */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+                className="mt-14 flex items-center gap-3"
+              >
+                <HandwrittenArrow direction="down" className="w-8 h-10" color="#e6ff00" />
+                <span className="text-xs font-display uppercase tracking-widest text-white/40">
+                  Scroll to explore
+                </span>
+              </motion.div>
+            </div>
+
+            {/* ── RIGHT: PHOTO ── */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.9, delay: 0.3 }}
+              className="relative flex justify-center lg:justify-end"
+            >
+              {/* Yellow offset box behind image */}
+              <div
+                className="absolute top-4 left-8 right-0 bottom-0 hidden lg:block"
+                style={{ border: "3px solid #e6ff00" }}
+              />
+
+              {/* Profile image container */}
+              <div
+                className="relative w-full max-w-sm aspect-[3/4] overflow-hidden"
+                style={{ border: "2px solid rgba(255,255,255,0.1)" }}
+              >
+                <Image
+                  src="/images/profile-casual.jpg"
+                  alt="Sathwika — Graphic Designer"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 450px"
+                  className="object-cover object-top"
+                />
+                {/* Dark gradient at bottom */}
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+              </div>
+
+              {/* Floating label card */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8 }}
+                className="absolute bottom-6 right-0 lg:-right-4 p-4"
+                style={{ background: "#e6ff00", minWidth: "160px" }}
+              >
+                <p className="text-[10px] font-bold font-display uppercase tracking-widest text-[#0a0a0a]/60">
+                  Graphic Designer
+                </p>
+                <p className="text-sm font-black font-display uppercase text-[#0a0a0a] leading-tight">
+                  &amp; Visual Creator
+                </p>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Torn paper transition to grid section */}
+      <JaggedTornEdge fromBlack={true} />
+    </>
   );
 }
