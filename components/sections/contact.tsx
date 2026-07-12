@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, MapPin, Phone, CheckCircle, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { CuteDaisy, CuteLeaf, HeaderDecoration } from "@/components/ui/floral-decorations";
+import { Send, Mail, MapPin, Phone, CheckCircle, Instagram, ExternalLink } from "lucide-react";
+import { HandwrittenArrow, MarkerHighlight } from "@/components/ui/handdrawn-decorations";
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -22,94 +21,141 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-secondary/35 relative">
-      {/* Botanical Details */}
-      <div className="absolute top-12 left-12 opacity-5 pointer-events-none">
-        <CuteLeaf className="w-24 h-24" />
-      </div>
-      <div className="absolute bottom-12 right-12 opacity-5 pointer-events-none">
-        <CuteDaisy className="w-28 h-28" />
+    <section id="contact" className="py-20 md:py-28 relative" style={{ background: "#0a0a0a" }}>
+
+      {/* Big yellow watermark text */}
+      <div
+        className="absolute top-0 right-0 font-display font-black uppercase select-none pointer-events-none"
+        style={{
+          fontSize: "clamp(6rem, 20vw, 16rem)",
+          lineHeight: 1,
+          color: "transparent",
+          WebkitTextStroke: "1px rgba(230,255,0,0.06)",
+          letterSpacing: "-0.04em",
+        }}
+      >
+        HELLO
       </div>
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+
+        {/* ── Section heading ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16 relative"
+          className="mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 relative inline-block">
-            Let&apos;s <span className="gradient-text">Connect</span>
-            <HeaderDecoration />
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-[2px] w-6 bg-[#e6ff00]" />
+            <span className="text-xs font-bold font-display uppercase tracking-[0.2em] text-[#e6ff00]/60">
+              Contact
+            </span>
+          </div>
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black uppercase text-white leading-tight">
+            Let&apos;s{" "}
+            <MarkerHighlight>Connect</MarkerHighlight>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto font-sans">
-            Have a cozy project in mind or just want to chat about designs? I&apos;d love to hear from you.
+          <p className="text-white/40 text-sm font-sans mt-4 max-w-md leading-relaxed">
+            Have a project in mind or just want to chat about designs? I&apos;d love to hear from you.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
-          {/* Contact Info */}
+        <div className="grid lg:grid-cols-5 gap-10 lg:gap-16">
+
+          {/* ── LEFT: Info ── */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2 flex flex-col gap-8"
           >
-            <div>
-              <h3 className="text-2xl font-bold font-serif mb-6 text-foreground">Get in Touch</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-background border border-border/80 flex items-center justify-center shrink-0 shadow-xs">
-                    <Mail className="w-5 h-5 text-primary" />
+            {/* Contact items */}
+            <div className="space-y-6">
+              {[
+                {
+                  icon: Mail,
+                  label: "Email",
+                  value: "hello@sathwika.design",
+                  href: "mailto:hello@sathwika.design",
+                },
+                {
+                  icon: Phone,
+                  label: "Phone",
+                  value: "+91 00000 00000",
+                  href: "tel:+91",
+                },
+                {
+                  icon: Instagram,
+                  label: "Instagram",
+                  value: "@sathwika.designs",
+                  href: "https://instagram.com",
+                },
+                {
+                  icon: MapPin,
+                  label: "Location",
+                  value: "India",
+                  href: undefined,
+                },
+              ].map((item) => (
+                <div key={item.label} className="flex items-center gap-4 group">
+                  <div
+                    className="w-11 h-11 flex-shrink-0 flex items-center justify-center transition-colors"
+                    style={{ border: "1px solid rgba(255,255,255,0.1)", background: "#111" }}
+                  >
+                    <item.icon className="w-4 h-4 text-[#e6ff00]" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider font-sans">Email</p>
-                    <a href="mailto:hello@sathwika.design" className="text-foreground hover:text-primary transition-colors font-sans font-medium text-sm">
-                      hello@sathwika.design
-                    </a>
+                    <p className="text-[10px] font-bold font-display uppercase tracking-widest text-white/30">
+                      {item.label}
+                    </p>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target={item.href.startsWith("http") ? "_blank" : undefined}
+                        rel="noopener noreferrer"
+                        className="text-sm font-sans text-white/70 hover:text-[#e6ff00] transition-colors flex items-center gap-1"
+                      >
+                        {item.value}
+                        {item.href.startsWith("http") && <ExternalLink className="w-3 h-3" />}
+                      </a>
+                    ) : (
+                      <p className="text-sm font-sans text-white/70">{item.value}</p>
+                    )}
                   </div>
                 </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-background border border-border/80 flex items-center justify-center shrink-0 shadow-xs">
-                    <Phone className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider font-sans">Phone</p>
-                    <a href="tel:+1234567890" className="text-foreground hover:text-primary transition-colors font-sans font-medium text-sm">
-                      +1 (234) 567-890
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-background border border-border/80 flex items-center justify-center shrink-0 shadow-xs">
-                    <MapPin className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider font-sans">Location</p>
-                    <p className="text-foreground font-sans font-medium text-sm">San Francisco, CA</p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
 
-            <div className="p-6 rounded-2xl bg-card border border-border shadow-xs relative overflow-hidden group">
-              <h4 className="font-bold font-serif text-lg mb-2 text-foreground">Availability</h4>
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed font-sans">
-                I am currently open for freelancing and boutique collaborations! Typical response time is within 24 hours.
+            {/* Availability badge */}
+            <div
+              className="p-5 relative overflow-hidden"
+              style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#111" }}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
+                </span>
+                <span className="text-xs font-bold font-display uppercase tracking-wider text-emerald-400">
+                  Open for Work
+                </span>
+              </div>
+              <p className="text-xs text-white/40 font-sans leading-relaxed">
+                Currently open for freelancing and boutique collaborations. Typical response time is within 24 hours.
               </p>
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-                <span className="text-sm font-semibold text-emerald-500 font-sans">Open for work</span>
-              </div>
-              <div className="absolute -bottom-4 -right-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                <CuteDaisy className="w-20 h-20" />
-              </div>
+            </div>
+
+            {/* Handwritten call to action */}
+            <div className="flex items-center gap-2 pt-2">
+              <HandwrittenArrow direction="right" className="w-10 h-6" color="#e6ff00" />
+              <span className="font-script text-xl" style={{ color: "#e6ff00" }}>
+                don&apos;t be shy!
+              </span>
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* ── RIGHT: Form ── */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -120,21 +166,30 @@ export function ContactSection() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="h-full flex flex-col items-center justify-center text-center p-12 rounded-3xl bg-card border-2 border-dashed border-primary/20 shadow-lg shadow-primary/5"
+                className="h-full min-h-[360px] flex flex-col items-center justify-center text-center p-12"
+                style={{ border: "2px solid #e6ff00", background: "#111" }}
               >
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <CheckCircle className="w-8 h-8 text-primary" />
+                <div
+                  className="w-14 h-14 flex items-center justify-center mb-4"
+                  style={{ background: "#e6ff00" }}
+                >
+                  <CheckCircle className="w-7 h-7 text-[#0a0a0a]" />
                 </div>
-                <h3 className="text-2xl font-bold font-serif mb-2 text-foreground">Message Sent!</h3>
-                <p className="text-muted-foreground font-sans text-sm max-w-xs leading-relaxed">
-                  Thank you so much for writing! I will read your message and reply as soon as possible.
+                <h3 className="text-2xl font-black font-display uppercase text-white mb-2">Message Sent!</h3>
+                <p className="text-white/40 font-sans text-sm max-w-xs leading-relaxed">
+                  Thank you! I&apos;ll read your message and reply as soon as possible.
                 </p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6 p-8 md:p-10 rounded-3xl bg-card border border-border/80 shadow-md shadow-primary/5 relative overflow-hidden">
-                <div className="grid sm:grid-cols-2 gap-6">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-5 p-6 sm:p-8"
+                style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#111" }}
+              >
+                <div className="grid sm:grid-cols-2 gap-5">
+                  {/* Name */}
                   <div>
-                    <label htmlFor="name" className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2 font-sans">
+                    <label htmlFor="name" className="block text-xs font-bold font-display uppercase tracking-widest text-white/40 mb-2">
                       Name
                     </label>
                     <input
@@ -143,12 +198,17 @@ export function ContactSection() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-background border border-input text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-sans text-sm"
-                      placeholder="Your lovely name"
+                      className="w-full px-4 py-3 text-sm font-sans text-white placeholder:text-white/20 focus:outline-none transition-all"
+                      style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.08)" }}
+                      onFocus={(e) => (e.target.style.borderColor = "#e6ff00")}
+                      onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
+                      placeholder="Your name"
                     />
                   </div>
+
+                  {/* Email */}
                   <div>
-                    <label htmlFor="email" className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2 font-sans">
+                    <label htmlFor="email" className="block text-xs font-bold font-display uppercase tracking-widest text-white/40 mb-2">
                       Email
                     </label>
                     <input
@@ -157,14 +217,18 @@ export function ContactSection() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-background border border-input text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-sans text-sm"
+                      className="w-full px-4 py-3 text-sm font-sans text-white placeholder:text-white/20 focus:outline-none transition-all"
+                      style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.08)" }}
+                      onFocus={(e) => (e.target.style.borderColor = "#e6ff00")}
+                      onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
                       placeholder="your@email.com"
                     />
                   </div>
                 </div>
 
+                {/* Subject */}
                 <div>
-                  <label htmlFor="subject" className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2 font-sans">
+                  <label htmlFor="subject" className="block text-xs font-bold font-display uppercase tracking-widest text-white/40 mb-2">
                     Subject
                   </label>
                   <input
@@ -173,13 +237,17 @@ export function ContactSection() {
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-background border border-input text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all font-sans text-sm"
+                    className="w-full px-4 py-3 text-sm font-sans text-white placeholder:text-white/20 focus:outline-none transition-all"
+                    style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.08)" }}
+                    onFocus={(e) => (e.target.style.borderColor = "#e6ff00")}
+                    onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
                     placeholder="Project details or simple greeting..."
                   />
                 </div>
 
+                {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2 font-sans">
+                  <label htmlFor="message" className="block text-xs font-bold font-display uppercase tracking-widest text-white/40 mb-2">
                     Message
                   </label>
                   <textarea
@@ -188,18 +256,25 @@ export function ContactSection() {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-background border border-input text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all resize-none font-sans text-sm leading-relaxed"
+                    className="w-full px-4 py-3 text-sm font-sans text-white placeholder:text-white/20 focus:outline-none transition-all resize-none leading-relaxed"
+                    style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.08)" }}
+                    onFocus={(e) => (e.target.style.borderColor = "#e6ff00")}
+                    onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
                     placeholder="Tell me about your brand story and how I can help..."
                   />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-md shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-300">
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Letter
-                </Button>
+                <button
+                  type="submit"
+                  className="w-full py-4 flex items-center justify-center gap-2 font-bold font-display uppercase tracking-wider text-sm transition-all hover:scale-[1.02] active:scale-95"
+                  style={{ background: "#e6ff00", color: "#0a0a0a" }}
+                >
+                  <Send className="w-4 h-4" />
+                  Send Message
+                </button>
 
-                <p className="text-[10px] text-muted-foreground/60 text-center font-sans">
-                  Your information is kept safe and beautiful. I never share details with others.
+                <p className="text-[10px] text-white/20 text-center font-sans">
+                  Your information is kept safe. I never share details with others.
                 </p>
               </form>
             )}

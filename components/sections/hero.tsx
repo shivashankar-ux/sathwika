@@ -189,42 +189,39 @@ export function HeroSection() {
               </motion.div>
             </div>
 
-            {/* ── RIGHT: PHOTO ── */}
+            {/* ── RIGHT: PHOTO (transparent cutout, floating) ── */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.3 }}
-              className="relative flex justify-center lg:justify-end"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="relative flex justify-center lg:justify-end items-end"
             >
-              {/* Yellow offset box behind image */}
+              {/* Subtle yellow glow behind her */}
               <div
-                className="absolute top-4 left-8 right-0 bottom-0 hidden lg:block"
-                style={{ border: "3px solid #e6ff00" }}
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none"
+                style={{ background: "#e6ff00" }}
               />
 
-              {/* Profile image container */}
-              <div
-                className="relative w-full max-w-sm aspect-[3/4] overflow-hidden"
-                style={{ border: "2px solid rgba(255,255,255,0.1)" }}
-              >
+              {/* Transparent cutout photo — no box, no border */}
+              <div className="relative w-full max-w-[360px] lg:max-w-[420px]">
                 <Image
-                  src="/images/profile-casual.jpg"
+                  src="/images/profile-nobg.png"
                   alt="Sathwika — Graphic Designer"
-                  fill
+                  width={1080}
+                  height={1350}
                   priority
-                  sizes="(max-width: 768px) 100vw, 450px"
-                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 80vw, 420px"
+                  className="w-full h-auto object-contain drop-shadow-2xl"
+                  style={{ filter: "drop-shadow(0 20px 60px rgba(230,255,0,0.15))" }}
                 />
-                {/* Dark gradient at bottom */}
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
               </div>
 
-              {/* Floating label card */}
+              {/* Floating yellow label card */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.8 }}
-                className="absolute bottom-6 right-0 lg:-right-4 p-4"
+                className="absolute bottom-8 right-0 lg:-right-2 p-4"
                 style={{ background: "#e6ff00", minWidth: "160px" }}
               >
                 <p className="text-[10px] font-bold font-display uppercase tracking-widest text-[#0a0a0a]/60">
