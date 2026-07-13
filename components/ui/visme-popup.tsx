@@ -125,7 +125,7 @@ export function VismePopup() {
                     <div className="w-2 h-2 rounded-full bg-yellow-400/60" />
                     <div className="w-2 h-2 rounded-full bg-green-400/60" />
                   </div>
-                  <span className="text-white/30">// design that speaks</span><br />
+                  <span className="text-white/30">&#47;&#47; design that speaks</span><br />
                   <span style={{ color: "#c084fc" }}>const</span> brand = <span className="text-green-400/70">✦</span> Sathwika<br />
                   <span style={{ color: "#c084fc" }}>return</span> brand.<span className="text-white/50">createMagic()</span>
                 </div>
