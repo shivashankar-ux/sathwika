@@ -17,7 +17,7 @@ export function CuteDaisy({ className = "w-6 h-6", color = "currentColor" }: { c
       <circle cx="71" cy="29" r="16" fill={color} opacity="0.85" />
       <circle cx="29" cy="71" r="16" fill={color} opacity="0.85" />
       {/* Pistil */}
-      <circle cx="50" cy="50" r="18" fill="#ffd166" />
+      <circle cx="50" cy="50" r="18" fill="#e9d5ff" />
     </svg>
   );
 }
@@ -45,7 +45,7 @@ export function CuteLeaf({ className = "w-6 h-6", color = "#c7ebd4" }: { classNa
       />
       <path
         d="M20 80C35 65 60 45 80 20"
-        stroke="#a0d6b4"
+        stroke="#a78bfa"
         strokeWidth="4"
         strokeLinecap="round"
       />
@@ -123,7 +123,7 @@ export function FloralFloatingBackground() {
 
   useEffect(() => {
     // Generate constant particles seeded with random math on client side
-    const colors = ["#ff5a79", "#ff7b5c", "#ffca3a", "#52b788", "#b388ff"];
+    const colors = ["#c084fc", "#a855f7", "#e9d5ff", "#8b5cf6", "#d8b4fe"];
     const types: ("petal" | "leaf" | "flower" | "sparkle")[] = ["petal", "leaf", "flower", "sparkle"];
     const items: PetalParticle[] = [];
 

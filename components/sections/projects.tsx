@@ -14,7 +14,7 @@ type Category = {
   num: string;
   label: string;
   scriptLabel: string;    // handwritten script overlay
-  clientLabel: string;    // yellow highlighted niche label
+  clientLabel: string;    // lavender highlighted niche label
   hashTag: string;
   description: string;
   projects: Project[];
@@ -86,7 +86,7 @@ export function ProjectsSection() {
             exit={{ opacity: 0 }}
             onClick={() => setLightbox(null)}
             className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-            style={{ background: "rgba(0,0,0,0.93)" }}
+            style={{ background: "rgba(12,10,20,0.96)" }}
           >
             <motion.div
               initial={{ scale: 0.88 }}
@@ -100,12 +100,12 @@ export function ProjectsSection() {
                 src={lightbox}
                 alt="Project preview"
                 className="w-full h-auto object-contain max-h-[88vh]"
-                style={{ border: "2px solid #e6ff00" }}
+                style={{ border: "2px solid #c084fc" }}
               />
               <button
                 onClick={() => setLightbox(null)}
-                className="absolute -top-3 -right-3 w-8 h-8 flex items-center justify-center font-bold text-[#0a0a0a] text-sm"
-                style={{ background: "#e6ff00" }}
+                className="absolute -top-3 -right-3 w-8 h-8 flex items-center justify-center font-bold text-[#0c0a14] text-sm"
+                style={{ background: "#c084fc" }}
               >
                 ✕
               </button>
@@ -114,7 +114,7 @@ export function ProjectsSection() {
         )}
       </AnimatePresence>
 
-      <section id="projects" className="py-20 md:py-28" style={{ background: "#111111" }}>
+      <section id="projects" className="py-20 md:py-28" style={{ background: "#18132a" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
           {/* ── Section heading ── */}
@@ -125,8 +125,8 @@ export function ProjectsSection() {
             className="mb-20"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-[2px] w-6 bg-[#e6ff00]" />
-              <span className="text-xs font-bold font-display uppercase tracking-[0.2em] text-[#e6ff00]/60">
+              <div className="h-[2px] w-6 bg-[#c084fc]" />
+              <span className="text-xs font-bold font-display uppercase tracking-[0.2em] text-[#c084fc]/60">
                 Portfolio
               </span>
             </div>
@@ -134,7 +134,7 @@ export function ProjectsSection() {
               What I{" "}
               <span
                 className="px-2"
-                style={{ background: "#e6ff00", color: "#0a0a0a" }}
+                style={{ background: "#c084fc", color: "#0c0a14" }}
               >
                 Provide
               </span>
@@ -156,7 +156,7 @@ export function ProjectsSection() {
                   {/* Number */}
                   <span
                     className="font-display text-5xl font-black leading-none"
-                    style={{ color: "#e6ff00" }}
+                    style={{ color: "#c084fc" }}
                   >
                     {cat.num}
                   </span>
@@ -166,16 +166,16 @@ export function ProjectsSection() {
                     <h3 className="font-display text-3xl sm:text-4xl font-black uppercase text-white leading-none">
                       {cat.label}
                     </h3>
-                    <span className="font-script text-2xl" style={{ color: "#e6ff00", marginTop: "-4px" }}>
+                    <span className="font-script text-2xl" style={{ color: "#c084fc", marginTop: "-4px" }}>
                       {cat.scriptLabel}
                     </span>
                   </div>
 
-                  {/* Client yellow label */}
+                  {/* Client lavender label */}
                   <div className="ml-0 sm:ml-auto flex items-center self-center mt-2 sm:mt-0">
                     <h4
                       className="font-display text-lg sm:text-xl font-black uppercase px-4 py-1.5"
-                      style={{ background: "#e6ff00", color: "#0a0a0a" }}
+                      style={{ background: "#c084fc", color: "#0c0a14" }}
                     >
                       {cat.clientLabel}
                     </h4>
@@ -190,13 +190,13 @@ export function ProjectsSection() {
                     <div
                       className="relative w-[110px] sm:w-[130px] rounded-[18px] overflow-hidden shadow-xl"
                       style={{
-                        border: "3px solid #333",
+                        border: "3px solid #2a1f42",
                         aspectRatio: "9/19",
                         background: "#000",
                       }}
                     >
                       {/* Status bar */}
-                      <div className="absolute top-0 inset-x-0 h-5 bg-[#0a0a0a] z-10 flex items-center justify-center gap-1">
+                      <div className="absolute top-0 inset-x-0 h-5 bg-[#0c0a14] z-10 flex items-center justify-center gap-1">
                         <div className="w-5 h-0.5 rounded-full bg-white/20" />
                       </div>
                       {/* Screen content */}
@@ -219,12 +219,12 @@ export function ProjectsSection() {
                         </div>
                       </div>
                       {/* Home bar */}
-                      <div className="absolute bottom-0 inset-x-0 h-4 bg-[#0a0a0a]/90 z-10 flex items-center justify-center">
+                      <div className="absolute bottom-0 inset-x-0 h-4 bg-[#0c0a14]/90 z-10 flex items-center justify-center">
                         <div className="w-8 h-0.5 rounded-full bg-white/30" />
                       </div>
                     </div>
                     {/* Label under phone */}
-                    <p className="text-[10px] font-display font-bold uppercase tracking-wider text-[#e6ff00]/50 mt-2 text-center">
+                    <p className="text-[10px] font-display font-bold uppercase tracking-wider text-[#c084fc]/50 mt-2 text-center">
                       {cat.label}<br />Designs
                     </p>
                   </div>
@@ -237,14 +237,14 @@ export function ProjectsSection() {
                       {cat.projects.map((proj, idx) => (
                         <motion.button
                           key={idx}
-                          whileHover={{ scale: 1.03, boxShadow: "0 0 0 3px #e6ff00" }}
+                          whileHover={{ scale: 1.03, boxShadow: "0 0 0 3px #c084fc" }}
                           whileTap={{ scale: 0.97 }}
                           onClick={() => setLightbox(proj.src)}
                           className="relative flex-shrink-0 overflow-hidden snap-start group"
                           style={{
                             width: "clamp(140px, 22vw, 200px)",
                             aspectRatio: "4/3",
-                            border: "1px solid rgba(255,255,255,0.08)",
+                            border: "1px solid rgba(192,132,252,0.15)",
                           }}
                         >
                           <Image
@@ -258,11 +258,11 @@ export function ProjectsSection() {
                           {/* Hover overlay */}
                           <div
                             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                            style={{ background: "rgba(0,0,0,0.5)" }}
+                            style={{ background: "rgba(12,10,20,0.6)" }}
                           >
                             <span
                               className="text-[10px] font-bold font-display uppercase tracking-widest px-2.5 py-1"
-                              style={{ background: "#e6ff00", color: "#0a0a0a" }}
+                              style={{ background: "#c084fc", color: "#0c0a14" }}
                             >
                               View
                             </span>
@@ -279,8 +279,8 @@ export function ProjectsSection() {
                     {cat.description}
                   </p>
                   <div className="flex items-center gap-1.5 flex-shrink-0">
-                    <HandwrittenArrow direction="left" className="w-8 h-5" color="#e6ff00" />
-                    <span className="font-script text-base" style={{ color: "#e6ff00" }}>
+                    <HandwrittenArrow direction="left" className="w-8 h-5" color="#c084fc" />
+                    <span className="font-script text-base" style={{ color: "#c084fc" }}>
                       {cat.hashTag}
                     </span>
                   </div>
@@ -303,7 +303,7 @@ export function ProjectsSection() {
             <a
               href="#contact"
               className="inline-block px-10 py-4 font-bold font-display uppercase tracking-wider text-sm transition-all hover:scale-105 active:scale-95"
-              style={{ background: "#e6ff00", color: "#0a0a0a" }}
+              style={{ background: "#c084fc", color: "#0c0a14" }}
             >
               Start a Project →
             </a>

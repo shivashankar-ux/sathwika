@@ -15,7 +15,7 @@ const stats = [
 export function AboutSection() {
   return (
     <>
-      <section id="about" className="relative py-24 md:py-32" style={{ background: "#161616" }}>
+      <section id="about" className="relative py-24 md:py-32" style={{ background: "#120f1e" }}>
         <div className="max-w-7xl mx-auto px-6">
 
           {/* ── INTRO HEADING ── */}
@@ -42,37 +42,38 @@ export function AboutSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="relative"
+              className="relative flex flex-col items-center"
             >
-              {/* Yellow shadow frame */}
+              {/* Subtle lavender glow */}
               <div
-                className="absolute top-4 left-4 w-full h-full"
-                style={{ border: "3px solid #e6ff00", zIndex: 0 }}
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full blur-3xl opacity-25 pointer-events-none"
+                style={{ background: "#c084fc" }}
               />
-              <div
-                className="relative aspect-[3/4] w-full max-w-sm overflow-hidden"
-                style={{ zIndex: 1, border: "2px solid rgba(255,255,255,0.15)" }}
-              >
+
+              {/* Transparent cutout photo */}
+              <div className="relative w-full max-w-[360px]">
                 <Image
-                  src="/images/profile-formal.jpg"
-                  alt="Sathwika"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 400px"
-                  className="object-cover object-top"
+                  src="/images/profile-nobg.png"
+                  alt="Sathwika — Graphic Designer"
+                  width={1080}
+                  height={1350}
+                  sizes="(max-width: 768px) 80vw, 360px"
+                  className="w-full h-auto object-contain"
+                  style={{ filter: "drop-shadow(0 20px 60px rgba(192,132,252,0.25))" }}
                 />
               </div>
 
-              {/* Handwritten label */}
+              {/* Floating lavender label */}
               <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="flex items-center gap-2 mt-4"
-                style={{ position: "relative", zIndex: 2 }}
+                transition={{ delay: 0.6 }}
+                className="mt-4 px-5 py-3"
+                style={{ background: "#c084fc" }}
               >
-                <HandwrittenArrow direction="right" className="w-10 h-6" color="#ffffff" />
-                <span className="font-script text-xl text-white/50">About me</span>
+                <p className="text-[10px] font-bold font-display uppercase tracking-widest text-[#0c0a14]/70">Graphic Designer</p>
+                <p className="text-sm font-black font-display uppercase text-[#0c0a14] leading-tight">&amp; Visual Creator</p>
               </motion.div>
             </motion.div>
 
@@ -87,7 +88,7 @@ export function AboutSection() {
               <h2 className="font-display text-4xl md:text-5xl font-black text-white uppercase mb-2">
                 Sathwika
               </h2>
-              <p className="font-display font-bold uppercase tracking-widest text-sm mb-6" style={{ color: "#e6ff00", background: "#0a0a0a", display: "inline-block", padding: "2px 10px" }}>
+              <p className="font-display font-bold uppercase tracking-widest text-sm mb-6" style={{ color: "#0c0a14", background: "#c084fc", display: "inline-block", padding: "2px 10px" }}>
                 Graphic Designer &amp; SMM
               </p>
 
@@ -105,19 +106,19 @@ export function AboutSection() {
 
               {/* Contact pills */}
               <div className="space-y-3 mb-8">
-                <p className="text-xs font-bold font-display uppercase tracking-widest text-white/40 border-l-4 border-[#e6ff00] pl-3">
+                <p className="text-xs font-bold font-display uppercase tracking-widest text-white/40 border-l-4 border-[#c084fc] pl-3">
                   Contact
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <a href="tel:+91" className="flex items-center gap-2 px-4 py-2 border border-white/30 text-sm font-semibold font-sans text-white/80 hover:bg-[#e6ff00] hover:text-[#0a0a0a] hover:border-[#e6ff00] transition-colors">
+                  <a href="tel:+91" className="flex items-center gap-2 px-4 py-2 border border-white/20 text-sm font-semibold font-sans text-white/80 hover:bg-[#c084fc] hover:text-[#0c0a14] hover:border-[#c084fc] transition-colors">
                     <Phone className="w-3.5 h-3.5" />
                     Call Me
                   </a>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 border border-white/30 text-sm font-semibold font-sans text-white/80 hover:bg-[#e6ff00] hover:text-[#0a0a0a] hover:border-[#e6ff00] transition-colors">
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 border border-white/20 text-sm font-semibold font-sans text-white/80 hover:bg-[#c084fc] hover:text-[#0c0a14] hover:border-[#c084fc] transition-colors">
                     <Instagram className="w-3.5 h-3.5" />
                     @sathwika
                   </a>
-                  <a href="mailto:sathwika@example.com" className="flex items-center gap-2 px-4 py-2 border border-white/30 text-sm font-semibold font-sans text-white/80 hover:bg-[#e6ff00] hover:text-[#0a0a0a] hover:border-[#e6ff00] transition-colors">
+                  <a href="mailto:sathwika@example.com" className="flex items-center gap-2 px-4 py-2 border border-white/20 text-sm font-semibold font-sans text-white/80 hover:bg-[#c084fc] hover:text-[#0c0a14] hover:border-[#c084fc] transition-colors">
                     <Mail className="w-3.5 h-3.5" />
                     Email
                   </a>
@@ -126,8 +127,8 @@ export function AboutSection() {
 
               {/* Handwritten arrow to CTA */}
               <div className="flex items-center gap-2">
-                <HandwrittenArrow direction="right" className="w-10 h-6" color="#ffffff" />
-                <a href="#contact" className="font-script text-xl underline underline-offset-4 text-white hover:text-[#e6ff00] transition-colors" style={{ textDecorationColor: "#e6ff00" }}>
+                <HandwrittenArrow direction="right" className="w-10 h-6" color="#c084fc" />
+                <a href="#contact" className="font-script text-xl underline underline-offset-4 text-white hover:text-[#c084fc] transition-colors" style={{ textDecorationColor: "#c084fc" }}>
                   Get in touch
                 </a>
               </div>
@@ -148,12 +149,12 @@ export function AboutSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 text-center border-r border-[#0a0a0a] last:border-r-0 md:[&:nth-child(2)]:border-r md:[&:nth-child(4)]:border-r-0 hover:bg-[#e6ff00] transition-colors group"
+                className="p-8 text-center border-r border-[#0c0a14] last:border-r-0 md:[&:nth-child(2)]:border-r md:[&:nth-child(4)]:border-r-0 hover:bg-[#c084fc] transition-colors group"
               >
-                <div className="font-display text-4xl font-black text-white group-hover:text-[#0a0a0a] mb-1">
+                <div className="font-display text-4xl font-black text-white group-hover:text-[#0c0a14] mb-1">
                   {stat.number}
                 </div>
-                <div className="text-xs font-display font-bold uppercase tracking-wider text-white/40 group-hover:text-[#0a0a0a]/70">
+                <div className="text-xs font-display font-bold uppercase tracking-wider text-white/40 group-hover:text-[#0c0a14]/70">
                   {stat.label}
                 </div>
               </motion.div>

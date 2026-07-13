@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Script from "next/script";
-import Image from "next/image";
 import { JaggedTornEdge, GridFloatingAccents, HandwrittenArrow } from "@/components/ui/handdrawn-decorations";
 
 declare global {
@@ -30,9 +29,9 @@ export function HeroSection() {
         minWidth: 200,
         scale: 1.0,
         scaleMobile: 1.0,
-        backgroundColor: 0x0a0a0a,
-        color1: 0xe6ff00,
-        color2: 0xffffff,
+        backgroundColor: 0x0c0a14,
+        color1: 0xc084fc,
+        color2: 0xe9d5ff,
         colorMode: "lerp",
         birdSize: 1.2,
         wingSpan: 25,
@@ -76,32 +75,32 @@ export function HeroSection() {
       <section
         ref={vantaRef}
         className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ background: "#0a0a0a" }}
+        style={{ background: "#0c0a14" }}
       >
         {/* Vanta canvas sits here via the ref — no extra overlay needed */}
 
-        {/* Thin yellow vertical accent line */}
+        {/* Thin lavender vertical accent line */}
         <div
           className="absolute left-0 top-0 bottom-0 w-1 hidden lg:block z-10"
-          style={{ background: "#e6ff00" }}
+          style={{ background: "#c084fc" }}
         />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-24 pb-16">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
 
-            {/* ── LEFT: TEXT ── */}
-            <div>
+            {/* ── TEXT ── */}
+            <div className="w-full">
               {/* Badge */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="flex items-center gap-3 mb-8"
+                className="flex items-center justify-center gap-3 mb-8"
               >
-                <div className="h-[2px] w-8" style={{ background: "#e6ff00" }} />
+                <div className="h-[2px] w-8" style={{ background: "#c084fc" }} />
                 <span
                   className="text-xs font-bold font-display uppercase tracking-[0.2em]"
-                  style={{ color: "#e6ff00" }}
+                  style={{ color: "#c084fc" }}
                 >
                   Graphic Designer &amp; Social Media
                 </span>
@@ -115,13 +114,12 @@ export function HeroSection() {
               >
                 <h1
                   className="font-display font-black uppercase text-white leading-none"
-                  style={{ fontSize: "clamp(4rem, 10vw, 8rem)", lineHeight: 0.9 }}
+                  style={{ fontSize: "clamp(4rem, 12vw, 10rem)", lineHeight: 0.9 }}
                 >
                   Sath
-                  <br />
                   <span
                     className="relative inline-block"
-                    style={{ WebkitTextStroke: "2px #e6ff00", color: "transparent" }}
+                    style={{ WebkitTextStroke: "2px #c084fc", color: "transparent" }}
                   >
                     wika
                   </span>
@@ -133,10 +131,10 @@ export function HeroSection() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="mt-4 mb-8 flex items-center gap-3"
+                className="mt-4 mb-8 flex items-center justify-center gap-3"
               >
-                <div className="h-0.5 w-10" style={{ background: "#e6ff00" }} />
-                <span className="font-script text-3xl" style={{ color: "#e6ff00" }}>
+                <div className="h-0.5 w-10" style={{ background: "#c084fc" }} />
+                <span className="font-script text-3xl" style={{ color: "#c084fc" }}>
                   portfolio
                 </span>
               </motion.div>
@@ -146,7 +144,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
-                className="text-white/60 text-base font-sans max-w-md leading-relaxed mb-10"
+                className="text-white/60 text-base font-sans max-w-lg mx-auto leading-relaxed mb-10"
               >
                 Creating visual magic through stunning brand identities, social media
                 designs, and digital storytelling that helps brands connect and grow.
@@ -157,18 +155,18 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.6 }}
-                className="flex flex-wrap gap-4 items-center"
+                className="flex flex-wrap gap-4 items-center justify-center"
               >
                 <a
                   href="#projects"
                   className="px-8 py-3 font-bold font-display uppercase tracking-wider text-sm transition-all hover:scale-105 active:scale-95"
-                  style={{ background: "#e6ff00", color: "#0a0a0a" }}
+                  style={{ background: "#c084fc", color: "#0c0a14" }}
                 >
                   Explore My Work
                 </a>
                 <a
                   href="#contact"
-                  className="px-8 py-3 font-bold font-display uppercase tracking-wider text-sm border-2 text-white transition-all hover:border-[#e6ff00] hover:text-[#e6ff00]"
+                  className="px-8 py-3 font-bold font-display uppercase tracking-wider text-sm border-2 text-white transition-all hover:border-[#c084fc] hover:text-[#c084fc]"
                   style={{ borderColor: "rgba(255,255,255,0.25)" }}
                 >
                   Say Hello
@@ -180,58 +178,14 @@ export function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
-                className="mt-14 flex items-center gap-3"
+                className="mt-14 flex items-center justify-center gap-3"
               >
-                <HandwrittenArrow direction="down" className="w-8 h-10" color="#e6ff00" />
+                <HandwrittenArrow direction="down" className="w-8 h-10" color="#c084fc" />
                 <span className="text-xs font-display uppercase tracking-widest text-white/40">
                   Scroll to explore
                 </span>
               </motion.div>
             </div>
-
-            {/* ── RIGHT: PHOTO (transparent cutout, floating) ── */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="relative flex justify-center lg:justify-end items-end"
-            >
-              {/* Subtle yellow glow behind her */}
-              <div
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none"
-                style={{ background: "#e6ff00" }}
-              />
-
-              {/* Transparent cutout photo — no box, no border */}
-              <div className="relative w-full max-w-[360px] lg:max-w-[420px]">
-                <Image
-                  src="/images/profile-nobg.png"
-                  alt="Sathwika — Graphic Designer"
-                  width={1080}
-                  height={1350}
-                  priority
-                  sizes="(max-width: 768px) 80vw, 420px"
-                  className="w-full h-auto object-contain drop-shadow-2xl"
-                  style={{ filter: "drop-shadow(0 20px 60px rgba(230,255,0,0.15))" }}
-                />
-              </div>
-
-              {/* Floating yellow label card */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8 }}
-                className="absolute bottom-8 right-0 lg:-right-2 p-4"
-                style={{ background: "#e6ff00", minWidth: "160px" }}
-              >
-                <p className="text-[10px] font-bold font-display uppercase tracking-widest text-[#0a0a0a]/60">
-                  Graphic Designer
-                </p>
-                <p className="text-sm font-black font-display uppercase text-[#0a0a0a] leading-tight">
-                  &amp; Visual Creator
-                </p>
-              </motion.div>
-            </motion.div>
           </div>
         </div>
       </section>

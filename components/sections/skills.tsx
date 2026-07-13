@@ -21,7 +21,7 @@ const creativeTools = [
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="bg-[#0a0a0a] py-24 md:py-32">
+    <section id="skills" className="py-24 md:py-32" style={{ background: "#0c0a14" }}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Section header */}
@@ -32,14 +32,14 @@ export function SkillsSection() {
           className="mb-16"
         >
           <div className="flex items-center gap-3 mb-3">
-            <div className="h-[2px] w-6 bg-[#e6ff00]" />
-            <span className="text-xs font-bold font-display uppercase tracking-[0.2em] text-[#e6ff00]">
+            <div className="h-[2px] w-6 bg-[#c084fc]" />
+            <span className="text-xs font-bold font-display uppercase tracking-[0.2em] text-[#c084fc]">
               My Expertise
             </span>
           </div>
           <h2 className="font-display text-4xl md:text-6xl font-black uppercase text-white leading-tight">
             Skills &amp;{" "}
-            <MarkerHighlight className="text-[#0a0a0a]">Tools</MarkerHighlight>
+            <MarkerHighlight className="text-[#0c0a14]">Tools</MarkerHighlight>
           </h2>
         </motion.div>
 
@@ -55,7 +55,7 @@ export function SkillsSection() {
           >
             <h3
               className="font-display text-2xl font-black uppercase mb-6"
-              style={{ color: "#e6ff00" }}
+              style={{ color: "#c084fc" }}
             >
               Creative Skills
             </h3>
@@ -72,7 +72,7 @@ export function SkillsSection() {
                     <span className="text-sm font-bold font-display uppercase tracking-wider text-white">
                       {skill.name}
                     </span>
-                    <span className="text-sm font-bold font-display text-[#e6ff00]">
+                    <span className="text-sm font-bold font-display text-[#c084fc]">
                       {skill.level}%
                     </span>
                   </div>
@@ -83,7 +83,7 @@ export function SkillsSection() {
                       viewport={{ once: true }}
                       transition={{ duration: 1, delay: 0.3 + i * 0.1, ease: "easeOut" }}
                       className="absolute inset-y-0 left-0"
-                      style={{ background: "#e6ff00" }}
+                      style={{ background: "linear-gradient(90deg, #a855f7, #c084fc)" }}
                     />
                   </div>
                 </motion.div>
@@ -100,7 +100,7 @@ export function SkillsSection() {
             className="space-y-10"
           >
             <div>
-              <h3 className="font-display text-2xl font-black uppercase mb-4" style={{ color: "#e6ff00" }}>
+              <h3 className="font-display text-2xl font-black uppercase mb-4" style={{ color: "#c084fc" }}>
                 Personal Skills
               </h3>
               <p className="text-white/60 text-sm font-sans leading-relaxed">
@@ -152,7 +152,7 @@ export function SkillsSection() {
             ].map((tool) => (
               <span
                 key={tool}
-                className="px-4 py-2 text-xs font-bold font-display uppercase tracking-wider text-white/60 border border-white/10 hover:border-[#e6ff00] hover:text-[#e6ff00] transition-colors cursor-default"
+                className="px-4 py-2 text-xs font-bold font-display uppercase tracking-wider text-white/60 border border-white/10 hover:border-[#c084fc] hover:text-[#c084fc] transition-colors cursor-default"
               >
                 {tool}
               </span>

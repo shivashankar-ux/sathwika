@@ -46,8 +46,8 @@ export default function RootLayout({
       <body className={`${barlowCondensed.variable} ${barlow.variable} ${caveat.variable} font-sans`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <div className="relative min-h-screen flex flex-col">
