@@ -16,8 +16,7 @@ const ANIMATION_URLS = [
 ];
 
 export function AnimatedCharacter({ className = "" }: { className?: string }) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [animationData, setAnimationData] = useState<any>(null);
+  const [animationData, setAnimationData] = useState<object | null>(null);
   const [urlIndex, setUrlIndex] = useState(0);
 
   useEffect(() => {
