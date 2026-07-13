@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { VismePopup } from "@/components/ui/visme-popup";
 import "./globals.css";
 
 const barlowCondensed = Barlow_Condensed({
@@ -54,6 +55,7 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
+            <VismePopup />
           </div>
           <Analytics />
           <SpeedInsights />
