@@ -5,71 +5,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { HandwrittenArrow } from "@/components/ui/handdrawn-decorations";
 
-type Project = {
-  src: string;
-  aspect: "square" | "landscape" | "portrait";
-};
+const carouselImages = [
+  "/images/cariusel1.jpg",
+  "/images/cariusel2.jpg",
+  "/images/cariusel3.jpg",
+  "/images/cariusel4.jpg",
+  "/images/cariusel5.jpg",
+  "/images/cariusel6.jpg",
+  "/images/cariusel7.jpg",
+];
 
-type Category = {
-  num: string;
-  label: string;
-  scriptLabel: string;    // handwritten script overlay
-  clientLabel: string;    // lavender highlighted niche label
-  hashTag: string;
-  description: string;
-  projects: Project[];
-  phone: string;          // image shown inside phone mockup
-};
-
-const categories: Category[] = [
-  {
-    num: "01",
-    label: "Social Media",
-    scriptLabel: "Creatives",
-    clientLabel: "Educational Institutes",
-    hashTag: "#socialmediadesigns",
-    description:
-      "Your social media creative posts beautifully combine professionalism with relatability — making learning feel modern and engaging. Each design delivers key messages through bold visuals, smart typography, and culturally relevant content perfect for connecting with students and parents alike.",
-    phone: "/images/project-3.jpg",
-    projects: [
-      { src: "/images/project-1.jpg",  aspect: "landscape" },
-      { src: "/images/project-2.jpg",  aspect: "landscape" },
-      { src: "/images/project-3.jpg",  aspect: "landscape" },
-      { src: "/images/project-4.jpg",  aspect: "landscape" },
-      { src: "/images/project-5.jpg",  aspect: "landscape" },
-    ],
-  },
-  {
-    num: "02",
-    label: "Instagram",
-    scriptLabel: "Carousels",
-    clientLabel: "Brand Storytelling",
-    hashTag: "#instagramcreatives",
-    description:
-      "Instagram carousel post designs that drive engagement and tell your brand's story across multiple slides. Each carousel is crafted to keep followers swiping, learning, and sharing — building lasting audience relationships through vivid, consistent visual storytelling.",
-    phone: "/images/project-7.jpg",
-    projects: [
-      { src: "/images/project-6.jpg",  aspect: "landscape" },
-      { src: "/images/project-7.jpg",  aspect: "landscape" },
-      { src: "/images/project-8.jpg",  aspect: "landscape" },
-      { src: "/images/project-9.jpg",  aspect: "landscape" },
-    ],
-  },
-  {
-    num: "03",
-    label: "Social Media",
-    scriptLabel: "Graphics",
-    clientLabel: "Creative for Gym & Fitness",
-    hashTag: "#brandstrategy",
-    description:
-      "Strategic brand planning visual campaigns emphasising bold design, impactful typography, and messaging that build recognition. These bold and energetic graphics help fitness brands stand out in a competitive space and motivate their audience.",
-    phone: "/images/project-10.jpg",
-    projects: [
-      { src: "/images/project-10.jpg", aspect: "landscape" },
-      { src: "/images/project-2.jpg",  aspect: "landscape" },
-      { src: "/images/project-5.jpg",  aspect: "landscape" },
-    ],
-  },
+const staticImages = [
+  "/images/project-1.jpg",
+  "/images/project-2.jpg",
+  "/images/project-3.jpg",
 ];
 
 export function ProjectsSection() {
@@ -92,20 +41,20 @@ export function ProjectsSection() {
               initial={{ scale: 0.88 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.88 }}
-              className="relative max-w-3xl w-full"
+              className="relative max-w-5xl w-full flex justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={lightbox}
                 alt="Project preview"
-                className="w-full h-auto object-contain max-h-[88vh]"
-                style={{ border: "2px solid #c084fc" }}
+                className="max-w-full h-auto object-contain max-h-[90vh] rounded-xl shadow-2xl"
+                style={{ border: "2px solid rgba(192,132,252,0.4)" }}
               />
               <button
                 onClick={() => setLightbox(null)}
-                className="absolute -top-3 -right-3 w-8 h-8 flex items-center justify-center font-bold text-[#0c0a14] text-sm"
-                style={{ background: "#c084fc" }}
+                className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full font-bold text-[#0c0a14] text-lg md:text-xl hover:scale-110 transition-transform z-10"
+                style={{ background: "#c084fc", boxShadow: "0 0 20px rgba(192,132,252,0.5)" }}
               >
                 ✕
               </button>
@@ -114,199 +63,186 @@ export function ProjectsSection() {
         )}
       </AnimatePresence>
 
-      <section id="projects" className="py-20 md:py-28" style={{ background: "#18132a" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section id="projects" className="py-20 md:py-32 relative overflow-hidden" style={{ background: "#18132a" }}>
+        
+        {/* Background ambient glow */}
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#c084fc]/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-pink-500/5 rounded-full blur-[150px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
 
           {/* ── Section heading ── */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-20"
+            className="mb-16 md:mb-24 text-center"
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-[2px] w-6 bg-[#c084fc]" />
-              <span className="text-xs font-bold font-display uppercase tracking-[0.2em] text-[#c084fc]/60">
-                Portfolio
+              <span className="text-sm font-bold font-display uppercase tracking-[0.2em] text-[#c084fc]/80">
+                Selected Work
               </span>
+              <div className="h-[2px] w-6 bg-[#c084fc]" />
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black uppercase text-white leading-tight">
-              What I{" "}
+            <h2 className="font-display text-4xl sm:text-5xl md:text-7xl font-black uppercase text-white leading-tight mb-6">
+              Client{" "}
               <span
-                className="px-2"
+                className="px-4 py-1 inline-block transform -rotate-2 shadow-lg"
                 style={{ background: "#c084fc", color: "#0c0a14" }}
               >
-                Provide
+                Masterpieces
               </span>
             </h2>
+            <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto font-sans">
+              High-converting designs that elevate brand identity and drive engagement.
+            </p>
           </motion.div>
 
-          {/* ── Category blocks ── */}
-          <div className="space-y-28">
-            {categories.map((cat, catIdx) => (
-              <motion.div
-                key={cat.num}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.65 }}
-              >
-                {/* ── Row 1: Number + Section title ── */}
-                <div className="flex flex-wrap items-start gap-x-4 gap-y-1 mb-6 pb-4 border-b border-white/10">
-                  {/* Number */}
-                  <span
-                    className="font-display text-5xl font-black leading-none"
-                    style={{ color: "#c084fc" }}
-                  >
-                    {cat.num}
-                  </span>
-
-                  {/* Title + script */}
-                  <div className="flex flex-col">
-                    <h3 className="font-display text-3xl sm:text-4xl font-black uppercase text-white leading-none">
-                      {cat.label}
-                    </h3>
-                    <span className="font-script text-2xl" style={{ color: "#c084fc", marginTop: "-4px" }}>
-                      {cat.scriptLabel}
-                    </span>
-                  </div>
-
-                  {/* Client lavender label */}
-                  <div className="ml-0 sm:ml-auto flex items-center self-center mt-2 sm:mt-0">
-                    <h4
-                      className="font-display text-lg sm:text-xl font-black uppercase px-4 py-1.5"
-                      style={{ background: "#c084fc", color: "#0c0a14" }}
-                    >
-                      {cat.clientLabel}
-                    </h4>
-                  </div>
-                </div>
-
-                {/* ── Row 2: Phone mockup + images row ── */}
-                <div className="flex flex-col md:flex-row gap-5 items-start mb-6">
-
-                  {/* Phone mockup — left */}
-                  <div className="flex-shrink-0 mx-auto md:mx-0">
-                    <div
-                      className="relative w-[110px] sm:w-[130px] rounded-[18px] overflow-hidden shadow-xl"
-                      style={{
-                        border: "3px solid #2a1f42",
-                        aspectRatio: "9/19",
-                        background: "#000",
-                      }}
-                    >
-                      {/* Status bar */}
-                      <div className="absolute top-0 inset-x-0 h-5 bg-[#0c0a14] z-10 flex items-center justify-center gap-1">
-                        <div className="w-5 h-0.5 rounded-full bg-white/20" />
-                      </div>
-                      {/* Screen content */}
-                      <div className="absolute top-5 inset-0 overflow-hidden">
-                        {/* Fake Instagram header */}
-                        <div className="flex items-center gap-1 px-1.5 py-1 bg-white border-b border-gray-100">
-                          <div className="w-3 h-3 rounded-full bg-gradient-to-br from-pink-500 to-orange-400" />
-                          <span className="text-[5px] font-bold text-gray-700">Instagram</span>
-                        </div>
-                        {/* Image */}
-                        <div className="relative w-full" style={{ height: "calc(100% - 20px)" }}>
-                          <Image
-                            src={cat.phone}
-                            alt={`${cat.label} phone mockup`}
-                            fill
-                            sizes="130px"
-                            loading="lazy"
-                            className="object-cover object-top"
-                          />
-                        </div>
-                      </div>
-                      {/* Home bar */}
-                      <div className="absolute bottom-0 inset-x-0 h-4 bg-[#0c0a14]/90 z-10 flex items-center justify-center">
-                        <div className="w-8 h-0.5 rounded-full bg-white/30" />
-                      </div>
-                    </div>
-                    {/* Label under phone */}
-                    <p className="text-[10px] font-display font-bold uppercase tracking-wider text-[#c084fc]/50 mt-2 text-center">
-                      {cat.label}<br />Designs
-                    </p>
-                  </div>
-
-                  {/* Images strip — right, horizontal scroll on mobile */}
-                  <div className="flex-1 w-full">
-                    <div className="flex gap-2.5 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-none"
-                      style={{ scrollbarWidth: "none" }}
-                    >
-                      {cat.projects.map((proj, idx) => (
-                        <motion.button
-                          key={idx}
-                          whileHover={{ scale: 1.03, boxShadow: "0 0 0 3px #c084fc" }}
-                          whileTap={{ scale: 0.97 }}
-                          onClick={() => setLightbox(proj.src)}
-                          className="relative flex-shrink-0 overflow-hidden snap-start group"
-                          style={{
-                            width: "clamp(140px, 22vw, 200px)",
-                            aspectRatio: "4/3",
-                            border: "1px solid rgba(192,132,252,0.15)",
-                          }}
-                        >
-                          <Image
-                            src={proj.src}
-                            alt={`${cat.label} project ${idx + 1}`}
-                            fill
-                            loading={catIdx === 0 && idx < 2 ? "eager" : "lazy"}
-                            sizes="200px"
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                          {/* Hover overlay */}
-                          <div
-                            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                            style={{ background: "rgba(12,10,20,0.6)" }}
-                          >
-                            <span
-                              className="text-[10px] font-bold font-display uppercase tracking-widest px-2.5 py-1"
-                              style={{ background: "#c084fc", color: "#0c0a14" }}
-                            >
-                              View
-                            </span>
-                          </div>
-                        </motion.button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* ── Row 3: Description + handwritten hashtag ── */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-                  <p className="text-white/50 text-sm font-sans leading-relaxed max-w-2xl">
-                    {cat.description}
-                  </p>
-                  <div className="flex items-center gap-1.5 flex-shrink-0">
-                    <HandwrittenArrow direction="left" className="w-8 h-5" color="#c084fc" />
-                    <span className="font-script text-base" style={{ color: "#c084fc" }}>
-                      {cat.hashTag}
-                    </span>
-                  </div>
-                </div>
-
-              </motion.div>
-            ))}
-          </div>
-
-          {/* ── CTA ── */}
+          {/* ── Seamless Carousels (Canva Style) ── */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-24 text-center"
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-32"
           >
-            <p className="text-white/30 text-sm font-sans mb-6">
-              Want to see more? Let&apos;s talk about your project.
-            </p>
-            <a
-              href="#contact"
-              className="inline-block px-10 py-4 font-bold font-display uppercase tracking-wider text-sm transition-all hover:scale-105 active:scale-95"
-              style={{ background: "#c084fc", color: "#0c0a14" }}
-            >
-              Start a Project →
-            </a>
+            <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+              <div className="flex items-center gap-4">
+                <span className="font-display text-5xl font-black text-[#c084fc]">01</span>
+                <div>
+                  <h3 className="font-display text-3xl md:text-4xl font-black uppercase text-white leading-none">
+                    Seamless Carousels
+                  </h3>
+                  <span className="font-script text-xl" style={{ color: "#c084fc" }}>
+                    Brand Storytelling
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <HandwrittenArrow direction="right" className="w-8 h-5" color="#c084fc" />
+                <span className="text-white/40 text-sm uppercase tracking-widest font-bold hidden sm:inline-block">Swipe / Scroll</span>
+              </div>
+            </div>
+
+            {/* Continuous strip container */}
+            <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#0c0a14]/50 backdrop-blur-sm p-2 md:p-6 lg:p-8">
+              <div 
+                className="flex gap-0 overflow-x-auto snap-x snap-mandatory scrollbar-none items-stretch cursor-grab active:cursor-grabbing rounded-xl border border-[#c084fc]/30"
+                style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
+              >
+                {carouselImages.map((src, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="relative flex-shrink-0 snap-start border-r border-white/5 last:border-r-0 group bg-[#110e1a]"
+                    style={{
+                      width: "clamp(260px, 40vw, 400px)",
+                      aspectRatio: "1/1",
+                    }}
+                    whileHover={{ opacity: 0.95 }}
+                    onClick={() => setLightbox(src)}
+                  >
+                    <Image
+                      src={src}
+                      alt={`Carousel slide ${idx + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 400px"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-[#0c0a14]/0 group-hover:bg-[#0c0a14]/40 transition-colors duration-300 flex items-center justify-center">
+                       <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-bold font-display uppercase tracking-widest px-5 py-2.5 rounded-full bg-[#c084fc] text-[#0c0a14] transform scale-90 group-hover:scale-100 shadow-[0_0_20px_rgba(192,132,252,0.4)]">
+                         Expand
+                       </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="mt-4 md:mt-6 flex justify-between items-center px-2">
+                <p className="text-white/40 text-xs md:text-sm">Experience the full continuous design flow.</p>
+                <div className="hidden sm:flex gap-1.5">
+                   {carouselImages.map((_, i) => (
+                     <div key={i} className="w-2 h-2 rounded-full bg-[#c084fc]/20" />
+                   ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ── Static Masterpieces ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex items-center gap-4 mb-10">
+              <span className="font-display text-5xl font-black text-[#c084fc]">02</span>
+              <div>
+                <h3 className="font-display text-3xl md:text-4xl font-black uppercase text-white leading-none">
+                  Static Creatives
+                </h3>
+                <span className="font-script text-xl" style={{ color: "#c084fc" }}>
+                  High Impact Visuals
+                </span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {staticImages.map((src, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ y: -8 }}
+                  className="relative group rounded-2xl md:rounded-3xl overflow-hidden bg-[#0c0a14] border border-white/5 shadow-xl cursor-pointer"
+                  style={{ aspectRatio: "4/5" }}
+                  onClick={() => setLightbox(src)}
+                >
+                  <Image
+                    src={src}
+                    alt={`Static project ${idx + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                  />
+                  {/* Premium overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0a14] via-transparent to-transparent opacity-70" />
+                  
+                  <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end items-start opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 bg-[#0c0a14]/20 backdrop-blur-[2px]">
+                    <span className="text-xs font-bold font-display uppercase tracking-widest px-4 py-2 rounded-full bg-[#c084fc] text-[#0c0a14] mb-3 shadow-[0_0_15px_rgba(192,132,252,0.5)]">
+                      View Project
+                    </span>
+                  </div>
+                  
+                  {/* Subtle border glow on hover */}
+                  <div className="absolute inset-0 border-2 border-[#c084fc]/0 group-hover:border-[#c084fc]/50 transition-colors duration-300 rounded-2xl md:rounded-3xl pointer-events-none" />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ── Conversion CTA ── */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="mt-24 md:mt-32 relative rounded-3xl overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-[#c084fc] to-[#ff7eb3] opacity-10" />
+            <div className="absolute inset-0 bg-[#0c0a14]/60 backdrop-blur-xl" />
+            <div className="relative p-10 md:p-16 text-center border border-[#c084fc]/30 rounded-3xl">
+              <h3 className="font-display text-3xl md:text-5xl font-black uppercase text-white mb-4">
+                Ready to stand out?
+              </h3>
+              <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8 font-sans">
+                Let&apos;s collaborate to build stunning, converting designs for your brand. Send me a message and let&apos;s start designing your success.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold font-display uppercase tracking-[0.15em] text-sm md:text-base transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(192,132,252,0.3)] hover:shadow-[0_0_40px_rgba(192,132,252,0.5)]"
+                style={{ background: "#c084fc", color: "#0c0a14" }}
+              >
+                Send a Message <span className="text-xl">👋</span>
+              </a>
+            </div>
           </motion.div>
 
         </div>
