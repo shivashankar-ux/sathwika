@@ -25,7 +25,7 @@ export function AboutSection() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <p className="font-display text-5xl md:text-7xl font-black text-white leading-tight">
+            <p className="font-display text-3xl sm:text-5xl md:text-7xl font-black text-white leading-tight">
               Hello.
               <br />
               This is my{" "}

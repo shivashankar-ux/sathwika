@@ -78,7 +78,7 @@ export function HeroSection() {
           style={{ background: "#c084fc" }}
         />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-24 pb-16">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-20 pb-12 sm:pt-24 sm:pb-16">
           <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
 
             {/* Badge */}
@@ -86,31 +86,32 @@ export function HeroSection() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex items-center justify-center gap-3 mb-8"
+              className="flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8"
             >
-              <div className="h-[2px] w-8" style={{ background: "#c084fc" }} />
+              <div className="h-[2px] w-5 sm:w-8" style={{ background: "#c084fc" }} />
               <span
-                className="text-xs font-bold font-display uppercase tracking-[0.2em]"
+                className="text-[10px] sm:text-xs font-bold font-display uppercase tracking-[0.12em] sm:tracking-[0.2em]"
                 style={{ color: "#c084fc" }}
               >
                 Graphic Designer &amp; Social Media
               </span>
-              <div className="h-[2px] w-8" style={{ background: "#c084fc" }} />
+              <div className="h-[2px] w-5 sm:w-8" style={{ background: "#c084fc" }} />
             </motion.div>
 
-            {/* SATHWIKA — single giant line */}
+            {/* SATHWIKA — responsive text sizing */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
+              className="w-full"
             >
               <h1
-                className="font-display font-black uppercase text-white leading-none whitespace-nowrap"
-                style={{ fontSize: "clamp(4.5rem, 14vw, 12rem)", lineHeight: 0.9 }}
+                className="font-display font-black uppercase text-white leading-none whitespace-nowrap tracking-tight"
+                style={{ fontSize: "clamp(2.75rem, 12vw, 12rem)", lineHeight: 0.9 }}
               >
                 Sath
                 <span
-                  style={{ WebkitTextStroke: "3px #c084fc", color: "transparent" }}
+                  style={{ WebkitTextStroke: "2px #c084fc", color: "transparent" }}
                 >
                   wika
                 </span>
@@ -122,10 +123,10 @@ export function HeroSection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-4 mb-8 flex items-center justify-center gap-3"
+              className="mt-3 sm:mt-4 mb-6 sm:mb-8 flex items-center justify-center gap-3"
             >
-              <div className="h-0.5 w-10" style={{ background: "#c084fc" }} />
-              <span className="font-script text-3xl" style={{ color: "#c084fc" }}>
+              <div className="h-0.5 w-8 sm:w-10" style={{ background: "#c084fc" }} />
+              <span className="font-script text-2xl sm:text-3xl" style={{ color: "#c084fc" }}>
                 portfolio
               </span>
             </motion.div>
@@ -135,7 +136,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.5 }}
-              className="text-white/60 text-base font-sans max-w-lg leading-relaxed mb-10"
+              className="text-white/70 text-sm sm:text-base font-sans max-w-lg leading-relaxed mb-8 sm:mb-10 px-2"
             >
               Creating visual magic through stunning brand identities, social media
               designs, and digital storytelling that helps brands connect and grow.
@@ -146,18 +147,18 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="flex flex-wrap gap-4 items-center justify-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center w-full sm:w-auto"
             >
               <a
                 href="#work"
-                className="px-8 py-3 font-bold font-display uppercase tracking-wider text-sm transition-all hover:scale-105 active:scale-95"
+                className="w-full sm:w-auto text-center px-8 py-3.5 font-bold font-display uppercase tracking-wider text-xs sm:text-sm transition-all hover:scale-105 active:scale-95"
                 style={{ background: "#c084fc", color: "#0c0a14" }}
               >
                 Explore My Work
               </a>
               <a
                 href="#contact"
-                className="px-8 py-3 font-bold font-display uppercase tracking-wider text-sm border-2 text-white transition-all hover:border-[#c084fc] hover:text-[#c084fc]"
+                className="w-full sm:w-auto text-center px-8 py-3.5 font-bold font-display uppercase tracking-wider text-xs sm:text-sm border-2 text-white transition-all hover:border-[#c084fc] hover:text-[#c084fc]"
                 style={{ borderColor: "rgba(255,255,255,0.25)" }}
               >
                 Say Hello
