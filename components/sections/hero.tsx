@@ -149,11 +149,11 @@ export function HeroSection() {
               className="flex flex-wrap gap-4 items-center justify-center"
             >
               <a
-                href="#skills"
+                href="#work"
                 className="px-8 py-3 font-bold font-display uppercase tracking-wider text-sm transition-all hover:scale-105 active:scale-95"
                 style={{ background: "#c084fc", color: "#0c0a14" }}
               >
-                Explore Skills
+                Explore My Work
               </a>
               <a
                 href="#contact"
