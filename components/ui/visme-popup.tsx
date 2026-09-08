@@ -15,9 +15,10 @@ const LOTTIE_URLS = [
 ];
 
 export function VismePopup() {
-  const [visible, setVisible]         = useState(false);
-  const [dismissed, setDismissed]     = useState(false);
-  const [lottieData, setLottieData]   = useState<object | null>(null);
+  const [visible, setVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [lottieData, setLottieData] = useState<object | null>(null);
 
   // Show after 5 seconds
   useEffect(() => {
@@ -191,3 +192,7 @@ export function VismePopup() {
     </AnimatePresence>
   );
 }
+
+
+
+
